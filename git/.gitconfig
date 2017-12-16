@@ -1,14 +1,14 @@
 [user]
-	email = bmsurber@gmail.com
-	name = bmsurber
+    email = 16054900+bmsurber@users.noreply.github.com
+    name = bmsurber
 [alias]
-	l = log --all --graph --decorate --oneline
-	s = status
-	nope = reset HEAD --hard
-	c = commit
+    l = log --all --graph --decorate --oneline
+    s = status
+    nope = reset HEAD --hard
+    c = commit
     cm = commit -m
     cam = commit -am
     p = push
     d = diff
 [push]
-	default = simple
+    default = simple
