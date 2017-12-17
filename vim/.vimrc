@@ -43,8 +43,8 @@ nnoremap <leader>q :q<cr>
 nnoremap <leader>c "+y
 nnoremap <leader>v "+p
 nnoremap <leader>f za
-nnoremap <leader>b oimport ipdb; ipdb.set_trace()<esc>
-nnoremap <leader>B Oimport ipdb; ipdb.set_trace()<esc>
+nnoremap <leader>b oimport pdb; pdb.set_trace()<esc>
+nnoremap <leader>B Oimport pdb; pdb.set_trace()<esc>
 nnoremap <leader>r :w<CR>:!clear<CR>:!python3 -i %<CR><CR>
 inoremap jk <ESC>
 inoremap kj <ESC>
