@@ -201,13 +201,14 @@ exec_always --no-startup-id feh --bg-scale /home/bryan/Pictures/i3wm.png # Wallp
 exec --no-startup-id nm-applet # NetworkManager
 exec --no-startup-id redshift-gtk -l 38.4:-85.4 # Night mode
 exec --no-startup-id xfce4-volumed # Volume control
+exec --no-startup-id xfce4-power-manager
 exec --no-startup-id compton -CGb # --config /home/bryan/.compton.conf
 #exec --no-startup-id xfce4-panel -d
 #bindsym Control+Escape exec --no-startup-id xfce4-popup-whiskermenu
 
-bindsym $mod+o mode $launch_mode
-set $launch_mode "Launch: (f)irefox, (g)oogle-chrome, (t)hunar, (c)alc, (s)hutdown, (r)eboot, (l)ock"
-mode $launch_mode {
+bindsym $mod+o mode $open_mode
+set $open_mode "Open: (f)irefox, (g)oogle-chrome, (t)hunar, (c)alc, (s)hutdown, (r)eboot, (l)ock"
+mode $open_mode {
     bindsym f exec firefox; mode "default"
     bindsym g exec google-chrome; mode "default"
     bindsym t exec thunar; mode "default"

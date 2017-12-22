@@ -31,8 +31,10 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+set scrolloff=3
 set smarttab
 set number
+set relativenumber
 set wildmenu
 set lazyredraw
 set backspace=2
