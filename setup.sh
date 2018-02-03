@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### Lists of packages to be installed ###
-pkgs='vim git stow mc python3-venv python3-pip ipython3 awscli lvm2 cryptsetup p7zip-full cifs-utils'
+pkgs='vim tmux git stow mc python3-venv python3-pip ipython3 awscli lvm2 cryptsetup oathtool p7zip-full cifs-utils'
 gui='keepassx redshift-gtk vinagre python3-tk xubuntu-restricted-extras'
 virt='virtualbox virtualbox-ext-pack vagrant'
 i3='i3 lxappearance feh compton j4-dmenu-desktop'
