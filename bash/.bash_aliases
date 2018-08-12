@@ -1,5 +1,7 @@
 #!/bin/bash
 #setxkbmap -option ctrl:nocaps
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
 alias se='sudoedit'
 alias conf='vim ~/.i3/config'
 alias vsh='vagrant ssh'
