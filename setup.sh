@@ -4,7 +4,7 @@
 pkgs='vim tmux git stow mc python3-venv python3-pip awscli lvm2 cryptsetup oathtool p7zip-full cifs-utils'
 gui='keepassx redshift-gtk vinagre python3-tk xubuntu-restricted-extras'
 virt='virtualbox virtualbox-ext-pack vagrant'
-i3='i3 lxappearance feh compton j4-dmenu-desktop'
+i3='i3 lxappearance feh compton rofi arandr'
 srv='lamp-server^ phpmyadmin libapache2-mod-wsgi-py3'
 
 sudo apt update
