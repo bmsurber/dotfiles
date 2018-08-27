@@ -1,5 +1,6 @@
 #!/bin/bash
 #setxkbmap -option ctrl:nocaps
+alias i='i3-msg'
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 alias se='sudoedit'

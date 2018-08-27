@@ -15,7 +15,7 @@
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 10
+font pango:DejaVu Sans 10
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -46,13 +46,13 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
-bindsym $win+d exec --no-startup-id "rofi -show-icons -modi run,drun -show run"
+bindsym $mod+Shift+d exec "rofi -show-icons -modi run,drun -show run"
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
-bindsym $win+Shift+d exec --no-startup-id "rofi -show-icons -modi run,drun -show drun"
-
+bindsym $win+d exec i3-dmenu-desktop
+bindsym $win+Shift+d exec "rofi -show-icons -modi run,drun -show drun"
 
 # change focus
 bindsym $mod+$left focus left
@@ -110,8 +110,6 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
- # Make the tilde key toggle scratchpad windows
-bindcode --release 49 scratchpad show
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -181,8 +179,10 @@ bar {
 }
 
 workspace_auto_back_and_forth yes
-hide_edge_borders smart
-for_window [class="^.*"] border pixel 2
+# for_window [class="^.*"] border pixel 0
+default_border pixel 0
+default_floating_border pixel 0
+# workspace_layout tabbed
 ###############################################################################
 # User defined bindings
 ###############################################################################
@@ -204,17 +204,29 @@ bindsym Print exec --no-startup-id xfce4-screenshooter
 # Tap windows key to open menu
 bindcode --release 133 exec --no-startup-id xfce4-popup-whiskermenu
 
+# Win+L to lock screen
+bindsym $win+l exec --no-startup-id i3lock -e -f -c 000000
+
 # Laptop brightness keys
 # bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10%
 # bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10%
 
-# Alt-tab cycle through tabs
+# Alt-tab cycle through i3 tabs
 bindsym $alt+Tab focus right
 bindsym $alt+Shift+Tab focus left
+
+# Ctrl-tab cycle through app tabs
+bindsym --release Control+Tab exec xdotool key --clearmodifiers ctrl+Page_Down
+bindsym --release Control+Shift+Tab exec xdotool key --clearmodifiers ctrl+Page_Up
 
 # Win-tab cycle through workspaces
 bindsym $win+Tab workspace next
 bindsym $win+Shift+Tab workspace prev
+
+ # Make the tilde key toggle scratchpad windows & bind $mod+backtick to create scratchpad terminal
+bindcode --release 49 scratchpad show
+bindsym $mod+grave exec --no-startup-id xfce4-terminal -T __scratchpad
+for_window [title=__scratchpad] border pixel 5, floating enable, resize set 800 600, move position center, move scratchpad, scratchpad show
 
 ##############################
 # Autostart stuff
@@ -228,7 +240,6 @@ exec --no-startup-id xfce4-panel --disable-wm-check
 # exec --no-startup-id nm-applet # NetworkManager
 # exec --no-startup-id xfce4-volumed # Volume control
 # exec --no-startup-id xfce4-power-manager
-
 
 ###############################
 # Power Mode
@@ -245,8 +256,56 @@ mode $power_mode {
     bindsym Return mode "default"
 }
 
+###############################
+# Pass-through  Mode
+###############################
 bindsym $mod+F12 mode $passthru
 set $passthru "Pass-through mode: All key bindings ignored. Press $mod+F12 to exit"
 mode $passthru {
     bindsym $mod+F12 mode "default"
+}
+
+
+###############################################################################
+# Gap stuff - requires i3-gaps
+###############################################################################
+gaps inner 20
+gaps outer 0
+# smart_gaps on
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
 }

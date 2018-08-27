@@ -26,7 +26,7 @@ set foldlevel=99
 "set foldminlines=5
 set foldcolumn=2
 set laststatus=2
-set colorcolumn=80
+"set colorcolumn=80
 set tabstop=4
 set expandtab
 set shiftwidth=4
