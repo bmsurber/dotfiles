@@ -173,6 +173,11 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         mode hide
+        i3bar_command i3bar -t
+        height 20
+        colors {
+            background #00000080
+        }
         status_command i3status
         position top
         modifier Mod1
@@ -183,6 +188,7 @@ workspace_auto_back_and_forth yes
 default_border pixel 0
 default_floating_border pixel 0
 # workspace_layout tabbed
+
 ###############################################################################
 # User defined bindings
 ###############################################################################
@@ -206,6 +212,9 @@ bindcode --release 133 exec --no-startup-id xfce4-popup-whiskermenu
 
 # Win+L to lock screen
 bindsym $win+l exec --no-startup-id i3lock -e -f -c 000000
+
+# Check number of package updates available
+bindsym $mod+u exec --no-startup-id "notify-send \\"System Update Status:\\" \\"$(cat /var/lib/update-notifier/updates-available)\\" --icon=system-software-update"
 
 # Laptop brightness keys
 # bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10%
