@@ -15,7 +15,7 @@
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans 10
+font pango:Hack 10
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -171,27 +171,25 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+bindsym $mod+b bar mode toggle
 bar {
-        mode hide
-        i3bar_command i3bar -t
-        height 20
-        colors {
-            background #00000080
-        }
-        status_command i3status
-        position top
-        modifier Mod1
+#    status_command i3status
+    position top
+    modifier $mod
+    mode hide
 }
 
 workspace_auto_back_and_forth yes
 # for_window [class="^.*"] border pixel 0
 default_border pixel 0
-default_floating_border pixel 0
-# workspace_layout tabbed
+default_floating_border pixel 3
+workspace_layout tabbed
 
 ###############################################################################
 # User defined bindings
 ###############################################################################
+bindsym $mod+y exec --no-startup-id "youtube-dl -o '~/Videos/%(title)s-%(id)s.%(ext)s' $(xsel) && notify-send 'Download complete:' \\"$(youtube-dl -e $(xsel))\\" || notify-send 'ERROR - Download failed!'"
+
 # Win+w = Web Browser
 bindsym $win+w exec --no-startup-id xdg-open "http://about:blank"
 
@@ -278,9 +276,9 @@ mode $passthru {
 ###############################################################################
 # Gap stuff - requires i3-gaps
 ###############################################################################
-gaps inner 20
-gaps outer 0
-# smart_gaps on
+gaps inner 15
+gaps outer 5
+#smart_gaps on
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
