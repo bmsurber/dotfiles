@@ -4,7 +4,7 @@ alias i='i3-msg'
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 alias se='sudoedit'
-alias conf='vim ~/.i3/config'
+alias conf='vim ~/.config/i3/config'
 alias vsh='vagrant ssh'
 alias vha='vagrant halt'
 alias vup='vagrant up'
