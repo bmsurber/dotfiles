@@ -1,5 +1,5 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+"runtime bundle/vim-pathogen/autoload/pathogen.vim
+"execute pathogen#infect()
 set t_Co=256
 let g:gruvbox_contrast_dark="hard"
 let g:gruvbox_contrast_light="hard"
@@ -24,8 +24,8 @@ set foldmethod=indent " default fold method
 set foldlevel=99
 "set foldnestmax=1
 "set foldminlines=5
-set foldcolumn=2
-set laststatus=2
+"set foldcolumn=2
+"set laststatus=2
 "set colorcolumn=80
 set tabstop=4
 set expandtab
@@ -34,7 +34,7 @@ set softtabstop=4
 set scrolloff=3
 set smarttab
 set number
-set relativenumber
+"set relativenumber
 set wildmenu
 set lazyredraw
 set backspace=2
